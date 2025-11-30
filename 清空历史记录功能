@@ -1,0 +1,16 @@
+// 初始化历史记录（从LocalStorage读取）
+let history = JSON.parse(localStorage.getItem('calcHistory')) || [];
+
+// 更新历史记录时同步存储
+function addToHistory(expression, result) {
+    // ...原有代码...
+    localStorage.setItem('calcHistory', JSON.stringify(history));
+}
+
+// 清空历史记录功能（新增按钮调用）
+function clearHistory() {
+    history = [];
+    localStorage.removeItem('calcHistory');
+    updateHistoryDisplay();
+}
+<button class="clear" onclick="clearHistory()">清空历史</button>
